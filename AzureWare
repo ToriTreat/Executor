@@ -1,0 +1,89 @@
+-- screengui
+local ScreenGui = Instance.new("ScreenGui")
+ScreenGui.Name = "PurpleExecutor"
+ScreenGui.Parent = game.CoreGui
+
+-- main frame
+local MainFrame = Instance.new("Frame")
+MainFrame.Name = "MainFrame"
+MainFrame.Parent = ScreenGui
+MainFrame.BackgroundColor3 = Color3.fromRGB(75, 0, 130)
+MainFrame.BorderSizePixel = 0
+MainFrame.Position = UDim2.new(0.3, 0, 0.3, 0)
+MainFrame.Size = UDim2.new(0, 400, 0, 300)
+MainFrame.Active = true
+MainFrame.Draggable = true
+
+-- Title Bar
+local TitleBar = Instance.new("Frame")
+TitleBar.Name = "TitleBar"
+TitleBar.Parent = MainFrame
+TitleBar.BackgroundColor3 = Color3.fromRGB(128, 0, 128)
+TitleBar.BorderSizePixel = 0
+TitleBar.Size = UDim2.new(1, 0, 0, 30)
+
+local TitleText = Instance.new("TextLabel")
+TitleText.Name = "TitleText"
+TitleText.Parent = TitleBar
+TitleText.BackgroundColor3 = Color3.fromRGB(128, 0, 128)
+TitleText.BorderSizePixel = 0
+TitleText.Size = UDim2.new(1, 0, 1, 0)
+TitleText.Font = Enum.Font.SourceSansBold
+TitleText.Text = "AzureWare Executor"
+TitleText.TextColor3 = Color3.fromRGB(255, 255, 255)
+TitleText.TextSize = 20
+
+-- Create TextBox for Code Input
+local CodeInput = Instance.new("TextBox")
+CodeInput.Name = "CodeInput"
+CodeInput.Parent = MainFrame
+CodeInput.BackgroundColor3 = Color3.fromRGB(50, 0, 100)
+CodeInput.BorderSizePixel = 0
+CodeInput.Position = UDim2.new(0, 10, 0, 50)
+CodeInput.Size = UDim2.new(1, -20, 0, 200)
+CodeInput.Font = Enum.Font.Code
+CodeInput.PlaceholderText = "Paste your script here..."
+CodeInput.Text = ""
+CodeInput.TextColor3 = Color3.fromRGB(255, 255, 255)
+CodeInput.TextSize = 18
+CodeInput.TextXAlignment = Enum.TextXAlignment.Left
+CodeInput.TextYAlignment = Enum.TextYAlignment.Top
+CodeInput.ClearTextOnFocus = false
+CodeInput.MultiLine = true
+
+-- Create Execute Button
+local ExecuteButton = Instance.new("TextButton")
+ExecuteButton.Name = "ExecuteButton"
+ExecuteButton.Parent = MainFrame
+ExecuteButton.BackgroundColor3 = Color3.fromRGB(128, 0, 128)
+ExecuteButton.BorderSizePixel = 0
+ExecuteButton.Position = UDim2.new(0, 10, 1, -40)
+ExecuteButton.Size = UDim2.new(0, 100, 0, 30)
+ExecuteButton.Font = Enum.Font.SourceSansBold
+ExecuteButton.Text = "Execute"
+ExecuteButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+ExecuteButton.TextSize = 18
+
+-- Create Clear Button
+local ClearButton = Instance.new("TextButton")
+ClearButton.Name = "ClearButton"
+ClearButton.Parent = MainFrame
+ClearButton.BackgroundColor3 = Color3.fromRGB(128, 0, 128)
+ClearButton.BorderSizePixel = 0
+ClearButton.Position = UDim2.new(0, 120, 1, -40)
+ClearButton.Size = UDim2.new(0, 100, 0, 30)
+ClearButton.Font = Enum.Font.SourceSansBold
+ClearButton.Text = "Clear"
+ClearButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+ClearButton.TextSize = 18
+
+-- Execute Button Functionality
+ExecuteButton.MouseButton1Click:Connect(function()
+    local scriptCode = CodeInput.Text
+    loadstring(scriptCode)()
+end)
+
+-- Clear Button Functionality
+ClearButton.MouseButton1Click:Connect(function()
+    CodeInput.Text = ""
+end)
