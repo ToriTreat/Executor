@@ -33,7 +33,7 @@ TitleText.Text = "AzureWare Executor"
 TitleText.TextColor3 = Color3.fromRGB(255, 255, 255)
 TitleText.TextSize = 20
 
--- Create TextBox for Code Input
+-- TextBox for Code Input
 local CodeInput = Instance.new("TextBox")
 CodeInput.Name = "CodeInput"
 CodeInput.Parent = MainFrame
@@ -51,7 +51,7 @@ CodeInput.TextYAlignment = Enum.TextYAlignment.Top
 CodeInput.ClearTextOnFocus = false
 CodeInput.MultiLine = true
 
--- Create Execute Button
+-- Execute Button
 local ExecuteButton = Instance.new("TextButton")
 ExecuteButton.Name = "ExecuteButton"
 ExecuteButton.Parent = MainFrame
@@ -64,7 +64,7 @@ ExecuteButton.Text = "Execute"
 ExecuteButton.TextColor3 = Color3.fromRGB(255, 255, 255)
 ExecuteButton.TextSize = 18
 
--- Create Clear Button
+-- Clear Button
 local ClearButton = Instance.new("TextButton")
 ClearButton.Name = "ClearButton"
 ClearButton.Parent = MainFrame
