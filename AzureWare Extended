@@ -1,0 +1,201 @@
+-- Create ScreenGui
+local ScreenGui = Instance.new("ScreenGui")
+ScreenGui.Name = "AzureWareExecutor"
+ScreenGui.Parent = game.CoreGui
+
+-- Create Logo Frame (Shaped Square with Glow)
+local LogoFrame = Instance.new("Frame")
+LogoFrame.Name = "LogoFrame"
+LogoFrame.Parent = ScreenGui
+LogoFrame.Size = UDim2.new(0, 80, 0, 80)  -- Adjust size as needed
+LogoFrame.Position = UDim2.new(1, -100, 0, 20)  -- Positioned at top-right
+LogoFrame.BackgroundColor3 = Color3.fromRGB(128, 0, 128)  -- Purple
+LogoFrame.BorderSizePixel = 0
+LogoFrame.Active = true
+LogoFrame.Draggable = true
+
+-- Add Glow Effect to LogoFrame
+local Glow = Instance.new("UIStroke")
+Glow.Name = "Glow"
+Glow.Parent = LogoFrame
+Glow.Color = Color3.fromRGB(160, 0, 160)  -- Brighter purple for glow effect
+Glow.Thickness = 5
+Glow.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+
+-- Create Logo Button
+local LogoButton = Instance.new("ImageButton")
+LogoButton.Name = "LogoButton"
+LogoButton.Parent = LogoFrame
+LogoButton.Size = UDim2.new(1, 0, 1, 0)  -- Fill LogoFrame
+LogoButton.BackgroundTransparency = 1
+LogoButton.Image = "rbxassetid://3610245066"  -- Replace with your own logo image ID
+
+-- Create Main Frame
+local MainFrame = Instance.new("Frame")
+MainFrame.Name = "MainFrame"
+MainFrame.Parent = ScreenGui
+MainFrame.BackgroundColor3 = Color3.fromRGB(75, 0, 130)
+MainFrame.BorderSizePixel = 0
+MainFrame.Position = UDim2.new(0.5, -300, 0.5, -200)  -- Centered
+MainFrame.Size = UDim2.new(0, 600, 0, 400)
+MainFrame.Active = true
+MainFrame.Draggable = true
+MainFrame.Visible = false  -- Initially hidden
+
+-- Create Title Bar
+local TitleBar = Instance.new("Frame")
+TitleBar.Name = "TitleBar"
+TitleBar.Parent = MainFrame
+TitleBar.BackgroundColor3 = Color3.fromRGB(128, 0, 128)
+TitleBar.BorderSizePixel = 0
+TitleBar.Size = UDim2.new(1, 0, 0, 30)
+
+local TitleText = Instance.new("TextLabel")
+TitleText.Name = "TitleText"
+TitleText.Parent = TitleBar
+TitleText.BackgroundColor3 = Color3.fromRGB(128, 0, 128)
+TitleText.BorderSizePixel = 0
+TitleText.Size = UDim2.new(1, 0, 1, 0)
+TitleText.Font = Enum.Font.SourceSansBold
+TitleText.Text = "AzureWare Executor"
+TitleText.TextColor3 = Color3.fromRGB(255, 255, 255)
+TitleText.TextSize = 20
+TitleText.TextXAlignment = Enum.TextXAlignment.Left
+
+-- Create Close Button
+local CloseButton = Instance.new("TextButton")
+CloseButton.Name = "CloseButton"
+CloseButton.Parent = TitleBar
+CloseButton.BackgroundColor3 = Color3.fromRGB(128, 0, 128)
+CloseButton.BorderSizePixel = 0
+CloseButton.Size = UDim2.new(0, 30, 0, 30)
+CloseButton.Position = UDim2.new(1, -30, 0, 0)
+CloseButton.Text = "X"
+CloseButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+CloseButton.TextSize = 18
+
+-- Close Button Functionality
+CloseButton.MouseButton1Click:Connect(function()
+    MainFrame.Visible = not MainFrame.Visible
+end)
+
+-- Create Buttons
+local ExecuteButton = Instance.new("TextButton")
+ExecuteButton.Name = "ExecuteButton"
+ExecuteButton.Parent = MainFrame
+ExecuteButton.BackgroundColor3 = Color3.fromRGB(100, 0, 150)
+ExecuteButton.BorderSizePixel = 0
+ExecuteButton.Size = UDim2.new(0, 150, 0, 50)
+ExecuteButton.Position = UDim2.new(0.1, 0, 0.7, 0)
+ExecuteButton.Text = "Execute"
+ExecuteButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+ExecuteButton.TextSize = 18
+
+-- Create Clear Button
+local ClearButton = Instance.new("TextButton")
+ClearButton.Name = "ClearButton"
+ClearButton.Parent = MainFrame
+ClearButton.BackgroundColor3 = Color3.fromRGB(100, 0, 150)
+ClearButton.BorderSizePixel = 0
+ClearButton.Size = UDim2.new(0, 150, 0, 50)
+ClearButton.Position = UDim2.new(0.3, 0, 0.7, 0)
+ClearButton.Text = "Clear"
+ClearButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+ClearButton.TextSize = 18
+
+-- Create Load Button
+local LoadButton = Instance.new("TextButton")
+LoadButton.Name = "LoadButton"
+LoadButton.Parent = MainFrame
+LoadButton.BackgroundColor3 = Color3.fromRGB(100, 0, 150)
+LoadButton.BorderSizePixel = 0
+LoadButton.Size = UDim2.new(0, 150, 0, 50)
+LoadButton.Position = UDim2.new(0.5, 0, 0.7, 0)
+LoadButton.Text = "Load"
+LoadButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+LoadButton.TextSize = 18
+
+-- Create Save Button
+local SaveButton = Instance.new("TextButton")
+SaveButton.Name = "SaveButton"
+SaveButton.Parent = MainFrame
+SaveButton.BackgroundColor3 = Color3.fromRGB(100, 0, 150)
+SaveButton.BorderSizePixel = 0
+SaveButton.Size = UDim2.new(0, 150, 0, 50)
+SaveButton.Position = UDim2.new(0.7, 0, 0.7, 0)
+SaveButton.Text = "Save"
+SaveButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+SaveButton.TextSize = 18
+
+-- Create TextBox
+local TextBox = Instance.new("TextBox")
+TextBox.Name = "TextBox"
+TextBox.Parent = MainFrame
+TextBox.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextBox.BorderSizePixel = 1
+TextBox.Position = UDim2.new(0.1, 0, 0.1, 0)
+TextBox.Size = UDim2.new(0.8, 0, 0.5, 0)
+TextBox.PlaceholderText = "Enter your command here..."
+TextBox.TextColor3 = Color3.fromRGB(0, 0, 0)
+TextBox.TextSize = 18
+
+-- Functionality for Buttons
+-- Execute Button Functionality
+ExecuteButton.MouseButton1Click:Connect(function()
+    local command = TextBox.Text
+    if command and command ~= "" then
+        -- Execute command
+        -- For example, you might use: loadstring(command)()
+        -- Ensure this is safe and consider adding validation/sandboxing
+        local success, errorMsg = pcall(loadstring(command))
+        if not success then
+            print("Error executing command:", errorMsg)
+        end
+    end
+end)
+
+-- Clear Button Functionality
+ClearButton.MouseButton1Click:Connect(function()
+    TextBox.Text = ""
+end)
+
+-- Load Button Functionality
+LoadButton.MouseButton1Click:Connect(function()
+    -- Example: Load text from a file or other source (replace with actual logic)
+    TextBox.Text = "Loaded content"
+end)
+
+-- Save Button Functionality
+SaveButton.MouseButton1Click:Connect(function()
+    -- Example: Save text to a file or other destination (replace with actual logic)
+    print("Saved content:", TextBox.Text)
+end)
+
+-- Toggle MainFrame Visibility with LogoButton
+LogoButton.MouseButton1Click:Connect(function()
+    MainFrame.Visible = not MainFrame.Visible
+end)
+
+-- Create Settings Tab
+local SettingsFrame = Instance.new("Frame")
+SettingsFrame.Name = "SettingsFrame"
+SettingsFrame.Parent = ScreenGui
+SettingsFrame.BackgroundColor3 = Color3.fromRGB(75, 0, 130)
+SettingsFrame.BorderSizePixel = 0
+SettingsFrame.Position = UDim2.new(0.5, -300, 0.5, -200)  -- Centered
+SettingsFrame.Size = UDim2.new(0, 600, 0, 400)
+SettingsFrame.Active = true
+SettingsFrame.Draggable = true
+SettingsFrame.Visible = false  -- Initially hidden
+
+local SettingsTitleBar = Instance.new("Frame")
+SettingsTitleBar.Name = "TitleBar"
+SettingsTitleBar.Parent = SettingsFrame
+SettingsTitleBar.BackgroundColor3 = Color3.fromRGB(128, 0, 128)
+SettingsTitleBar.BorderSizePixel = 0
+SettingsTitleBar.Size = UDim2.new(1, 0, 0, 30)
+
+local SettingsTitleText = Instance.new("TextLabel")
+SettingsTitleText.Name = "TitleText"
+SettingsTitleText.Parent = SettingsTitleBar
+SettingsTitleText.BackgroundColor3 = Color3
